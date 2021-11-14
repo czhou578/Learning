@@ -1,29 +1,29 @@
-const object1: {
-  name: string;
-  age: number;
-  hobbies: string[];
-  role: [number, string]
-} = {
-  name: 'Colin',
-  age: 30,
-  hobbies: ['Sports', 'Cooking'],
-  role: [2, 'author']
+
+//ts only sees that union exists, doesn't analyze what's in union type
+function combine(input1: number | string, input2: number | string, conversion: string) {
+  let result;
+
+  if (typeof input1 === 'number' && typeof input2 === 'number' || result === 'as-number') {
+    result = +input1 + +input2;
+  } else {
+    result = input1.toString() + input2.toString()
+  }
+
+  return result
+
+  // if (conversion === 'as-number') {
+  //   return +result //same as parseFloat()
+  // } else {
+  //   return result.toString();
+  // }
 }
 
-object1.role.push('admin')
-// object1.role = [0, 'asdf', 'asdfasdf'] not allowed
-// object1.role = [] empty array not allowed in tuples
-// object1.role[1] = 10 not allowed
+const combinedAges = combine(30, 26, 'as-number')
+console.log(combinedAges);
 
-let favoriteActivities: string[];
-// let favoriteActivities: any[]
-favoriteActivities = ['Sports']
+const combinedStringAges = combine('30', '26', 'as-number')
+console.log(combinedStringAges);
 
-console.log(object1.name);
 
-for (const iterator of object1.hobbies) { //detects that hobbies is array of strings
-  console.log(iterator.toUpperCase());
-  // console.log(iterator.localeCompare()); //wrong, since type is not string!!
-}
-
-//tuple - fixed length array and fixed type
+const combinedNames = combine("max", "annad", 'as-text')
+console.log(combinedNames);
