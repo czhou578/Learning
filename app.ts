@@ -1,29 +1,18 @@
+let userInput: unknown
+let userName: string;
 
-//ts only sees that union exists, doesn't analyze what's in union type
-function combine(input1: number | string, input2: number | string, conversion: string) {
-  let result;
+userInput = 5;
+userInput = "max"
 
-  if (typeof input1 === 'number' && typeof input2 === 'number' || result === 'as-number') {
-    result = +input1 + +input2;
-  } else {
-    result = input1.toString() + input2.toString()
-  }
-
-  return result
-
-  // if (conversion === 'as-number') {
-  //   return +result //same as parseFloat()
-  // } else {
-  //   return result.toString();
-  // }
+if (typeof userInput === 'string') {
+  userName = userInput
 }
 
-const combinedAges = combine(30, 26, 'as-number')
-console.log(combinedAges);
+function generateError(message: string, code: number) {
+  throw { message: MessageChannel, errorCode: code }
+}
 
-const combinedStringAges = combine('30', '26', 'as-number')
-console.log(combinedStringAges);
+generateError('An error happened', 800)
+// console.log(result);
 
-
-const combinedNames = combine("max", "annad", 'as-text')
-console.log(combinedNames);
+// userName = userInput; -> error since userinput could be anything
