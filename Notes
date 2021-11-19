@@ -1,0 +1,10 @@
+You can indicate the props like this:
+
+interface ButtonsProps {
+  enter?: boolean;
+}
+export default function Buttons(props: ButtonsProps): React.ReactElement {
+Or if the element has children:
+
+export default function Buttons(props: React.PropsWithChildren<ButtonsProps>): React.ReactElement {
+This allows the use of Buttons without having to read the function to see what the props should be.
