@@ -1,5 +1,4 @@
-# learnTypescript
+# Learning
 
-First time doing anything with TypeScript. Wish me luck!
+First time experimenting with unfamiliar web technologies. Wish me luck!
 
-# NextJS-Galore
