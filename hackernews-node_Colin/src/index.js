@@ -1,17 +1,6 @@
 const { ApolloServer } = require("apollo-server"); //graphql express server
-
-const typeDefs = `
-  type Query {
-    info: String!
-    feed: [Link!]!
-  }
-
-  type Link {
-    id: ID!
-    description: String!
-    url: String!
-  }
-`;
+const fs = require("fs");
+const path = require("path");
 
 let links = [
   {
@@ -28,15 +17,30 @@ const resolvers = {
     feed: () => links,
   },
 
-  Link: {
-    id: (parent) => parent.id,
-    description: (parent) => parent.description,
-    url: (parent) => parent.url,
+  // Link: {
+  //   id: (parent) => parent.id,
+  //   description: (parent) => parent.description,
+  //   url: (parent) => parent.url,
+  // },
+
+  Mutation: {
+    post: (parent, args) => {
+      let idCount = links.length;
+
+      const link = {
+        id: `link-${idCount++}`,
+        description: args.description,
+        url: args.url,
+      };
+
+      links.push(link);
+      return link;
+    },
   },
 };
 
 const server = new ApolloServer({
-  typeDefs,
+  typeDefs: fs.readFileSync(path.join(__dirname, "schema.graphql"), "utf8"),
   resolvers,
 });
 
