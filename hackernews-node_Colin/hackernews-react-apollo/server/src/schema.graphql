@@ -1,26 +1,33 @@
 type Query {
   info: String!
-  feed(filter: String, skip: Int, take: Int, orderBy: LinkOrderByInput): Feed!
+  feed(
+    filter: String
+    skip: Int
+    take: Int
+    orderBy: LinkOrderByInput
+  ): Feed!
 }
 
 type Feed {
+  id: ID!
   links: [Link!]!
   count: Int!
 }
 
 type Mutation {
   post(url: String!, description: String!): Link!
-  signup(email: String!, password: String!, name: String!): AuthPayload
+  signup(
+    email: String!
+    password: String!
+    name: String!
+  ): AuthPayload
   login(email: String!, password: String!): AuthPayload
   vote(linkId: ID!): Vote
 }
 
-type Link {
-  id: ID!
-  description: String!
-  url: String!
-  postedBy: User
-  votes: [Vote!]!
+type Subscription {
+  newLink: Link
+  newVote: Vote
 }
 
 type AuthPayload {
@@ -35,9 +42,13 @@ type User {
   links: [Link!]!
 }
 
-type Subscription {
-  newLink: Link
-  newVote: Vote
+type Link {
+  id: ID!
+  description: String!
+  url: String!
+  postedBy: User
+  votes: [Vote!]!
+  createdAt: DateTime!
 }
 
 type Vote {
@@ -56,3 +67,5 @@ enum Sort {
   asc
   desc
 }
+
+scalar DateTime
