@@ -31,20 +31,20 @@ const LinkList = () => {
   const { data } = useQuery(FEED_QUERY);
 
   return (
-    <div>
-      {linksToRender.map((link) => (
-        <Link key={link.id} link={link} />
-      ))}
-    </div>
     // <div>
-    //   {data && (
-    //     <>
-    //       {data.feed.links.map((link) => (
-    //         <Link key={link.id} link={link} />
-    //       ))}
-    //     </>
-    //   )}
+    //   {linksToRender.map((link) => (
+    //     <Link key={link.id} link={link} />
+    //   ))}
     // </div>
+    <div>
+      {data && (
+        <>
+          {data.feed.links.map((link) => (
+            <Link key={link.id} link={link} />
+          ))}
+        </>
+      )}
+    </div>
   );
 };
 
