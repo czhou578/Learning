@@ -72,8 +72,31 @@ export type ApiResponse<T> = (
   }
 );
 
-export function promisify(arg: unknown): unknown {
-  return null;
+type Callback<T> = (callback: (response: (ApiResponse<T>)) => void) => void
+type PromiseFunction<T> = () => Promise<T> //type is a function 
+
+// export function promisify<T>(arg: Callback<T>): PromiseFunction2<T> {
+//   return new Promise((resolve, reject) => {
+//     arg((response) => {
+//       if (response.status === "success") {
+//         resolve(response.data)
+//       } else {
+//         reject(new Error(response.error))
+//       }
+//     })
+//   })
+// }
+
+export function promisify<T>(arg: Callback<T>): PromiseFunction<T> {
+  return () => new Promise((resolve, reject) => {
+    arg((response) => {
+      if (response.status === "success") {
+        resolve(response.data)
+      } else {
+        reject(new Error(response.error))
+      }
+    })
+  })
 }
 
 const oldApi = {
