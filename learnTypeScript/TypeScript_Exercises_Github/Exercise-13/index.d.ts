@@ -8,5 +8,5 @@ declare module 'date-wizard' {
     hours: number;
     minutes: number;
     seconds: number;
-}
+  }
 }
