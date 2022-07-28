@@ -8,3 +8,8 @@
 - visual style doesn't correspond to element you should be using in that case
 - data attribute on buttons, what for?
 - aria-label for screenreaders
+- don't need fancy container, since its
+
+use em in media queries because that makes zoom in/out consistent across all browsers, em looks at browser default setting, and not root font size
+
+1fr unit:
