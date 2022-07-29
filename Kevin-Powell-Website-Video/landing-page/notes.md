@@ -1,3 +1,6 @@
+shift + alt + down arrow to duplicate selected code
+ctrl + shift + L to create multiple cursors at places where the selected code matches
+
 - don't use h1 as alternative for logo, not going to help with seo
 - "role" in ul, some screen readers want to treat it as a list for accessibility
 
@@ -13,3 +16,14 @@
 use em in media queries because that makes zoom in/out consistent across all browsers, em looks at browser default setting, and not root font size
 
 1fr unit:
+
+use "|" in html to separate utility from component classes only
+.button[data-type="inverted"]
+
+focus:visible on button
+line-height 1 to center things...
+
+Responsiveness Notes:
+
+- spacing utility classes??
+-
