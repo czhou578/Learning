@@ -48,4 +48,7 @@ print("hello world")
 
 student = {'name': 'John', 'age': 25, 'courses': ['Math']}
 student['testNum'] = 24
-print(student)
+
+for key, value in student.items():
+    print(key, value)
+# print(student)
