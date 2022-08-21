@@ -9,7 +9,9 @@ mydb = mysql.connector.connect(
 
 # print(mydb)
 mycursor = mydb.cursor()
-mycursor.execute("Select * from scores")
+# mycursor.execute("Select * from scores")
+mycursor.execute("Select * from scores limit 2")
+# mycursor.execute("select * from scores group by user")
 myresult = mycursor.fetchall()
 
 for x in myresult:
