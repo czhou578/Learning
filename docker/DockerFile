@@ -1,7 +1,7 @@
 FROM node:latest
 
-COPY ./docker .
+COPY . .
 
 RUN npm install
 
-CMD node docker/index.js
+CMD node src/index.js

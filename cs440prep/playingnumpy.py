@@ -24,3 +24,13 @@ arr = np.array([1, 0, 3])
 newarr = arr.astype(bool)
 
 print(newarr)
+
+np.zeros((3, 4))
+
+c = np.array([[[0,  1,  2],  # a 3D array (two stacked 2D arrays)
+               [10, 12, 13]],
+              [[100, 101, 102],
+               [110, 112, 113]]])
+
+print('this is the shape ', c.shape)
+print(c[1, ...])
