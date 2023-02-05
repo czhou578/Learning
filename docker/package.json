@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "First time doing anything with TypeScript. Wish me luck!",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "lite-server"
@@ -21,6 +22,8 @@
     "lite-server": "^2.6.1"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
   }
 }
