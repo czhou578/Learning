@@ -1,6 +1,6 @@
 import mysql from 'mysql'
 
-export const connection = mysql.createConnection({
+export const database = mysql.createConnection({
     host: "localhost",
     user: 'root',
     database: 'wordament',

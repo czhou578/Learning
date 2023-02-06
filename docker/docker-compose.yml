@@ -1,0 +1,21 @@
+services:
+  nodejs:
+    build:
+      context:
+    image: colinzhou.node-example
+    depends_on:
+      - mysql
+    networks:
+      - backend
+    ports:
+      - "8001:3001"
+    container_name: brave_kare
+  mysql:
+    image: mysql
+    networks:
+      - backend
+    environment:
+      - MYSQL_ROOT=localhost
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=wordament
+    container_name: brave_kare
