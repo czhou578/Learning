@@ -1,21 +1,24 @@
+version: '20.10.21'
+
 services:
   nodejs:
     build:
-      context:
+      context: .
+      dockerfile: ./Dockerfile
     image: colinzhou.node-example
+    env_file:
+      - ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     depends_on:
       - mysql
-    networks:
-      - backend
-    ports:
-      - "8001:3001"
-    container_name: brave_kare
+
   mysql:
     image: mysql
-    networks:
-      - backend
     environment:
-      - MYSQL_ROOT=localhost
-      - MYSQL_USER=root
-      - MYSQL_DATABASE=wordament
-    container_name: brave_kare
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+    env_file:
+      - ./.env
+    ports:
+      - $MYSQL_LOCAL_PORT:$MYSQL_DOCKER_PORT
