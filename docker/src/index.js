@@ -6,10 +6,26 @@ import { database } from './database.js'
 const app = express()
 app.use(cors())
 
-database.connect(function (err) {
-    if (err) throw err;
-    console.log("Connected");
-  });
+
+async function connect() {
+    try {
+        await new Promise((resolve, reject) => {
+            database.connect(err => {
+                return err ? reject(err) : resolve(console.log('connected'))
+            })
+        })
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+connect()
+
+// database.connect(async function (err) {
+//     if (err) throw err;
+//     console.log("Connected");
+//   });
 
 app.get("/", (_, res) => {
     let sql = `SELECT * FROM SCORES`

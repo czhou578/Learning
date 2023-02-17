@@ -1,6 +1,17 @@
 version: '20.10.21'
 
 services:
+  mysql:
+    image: mysql:5.7.24
+    env_file: ./.env
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+    ports:
+      - $MYSQL_LOCAL_PORT:$MYSQL_DOCKER_PORT
+    container_name: mydb
+  
   nodejs:
     build:
       context: .
@@ -12,13 +23,3 @@ services:
     depends_on:
       - mysql
 
-  mysql:
-    image: mysql
-    env_file: ./.env
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE=$MYSQL_DATABASE
-    ports:
-      - $MYSQL_LOCAL_PORT:$MYSQL_DOCKER_PORT
-    container_name: mydb
