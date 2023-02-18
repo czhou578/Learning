@@ -8,6 +8,7 @@ app.use(cors())
 
 
 async function connect() {
+    console.log('start inside function')
     try {
         await new Promise((resolve, reject) => {
             database.connect(err => {
@@ -20,15 +21,21 @@ async function connect() {
     }
 }
 
-connect()
+let retries = 5
 
-// database.connect(async function (err) {
-//     if (err) throw err;
-//     console.log("Connected");
-//   });
+while (retries) {
+    console.log('retries number: ' + retries)
+    try {
+        connect()
+        break
+    } catch (error) {
+        retries -= 1
+        await new Promise(res => setTimeout(res, 5000))
+    }
+}
 
 app.get("/", (_, res) => {
-    let sql = `SELECT * FROM SCORES`
+    let sql = `SELECT count(*) FROM User`
     database.query(sql, (error, result) => {
         if (error) throw error
 

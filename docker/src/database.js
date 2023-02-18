@@ -5,6 +5,6 @@ export const database = mysql2.createConnection({
     user: 'root',
     password: 'podium218',
     database: 'wordament',
-    port: $MYSQL_DOCKER_PORT,
+    port: '3306',
     multipleStatements: 'true'
 })
