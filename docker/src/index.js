@@ -7,32 +7,32 @@ const app = express()
 app.use(cors())
 
 
-async function connect() {
-    console.log('start inside function')
-    try {
-        await new Promise((resolve, reject) => {
-            database.connect(err => {
-                return err ? reject(err) : resolve(console.log('connected'))
-            })
-        })
+// async function connect() {
+//     console.log('start inside function')
+//     try {
+//         await new Promise((resolve, reject) => {
+//             database.getConnection(err => {
+//                 return err ? reject(err) : resolve(console.log('connected'))
+//             })
+//         })
 
-    } catch (error) {
-        console.log(error)
-    }
-}
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
 
-let retries = 5
+// let retries = 5
 
-while (retries) {
-    console.log('retries number: ' + retries)
-    try {
-        connect()
-        break
-    } catch (error) {
-        retries -= 1
-        await new Promise(res => setTimeout(res, 5000))
-    }
-}
+// while (retries) {
+//     console.log('retries number: ' + retries)
+//     try {
+//         connect()
+//         break
+//     } catch (error) {
+//         retries -= 1
+//         await new Promise(res => setTimeout(res, 5000))
+//     }
+// }
 
 app.get("/", (_, res) => {
     let sql = `SELECT count(*) FROM User`
