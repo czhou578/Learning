@@ -7,6 +7,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./wordament_user.sql:/docker-entrypoint-initdb.d/wordament_user.sql
+      - ./wordament_scores.sql:/docker-entrypoint-initdb.d/wordament_scores.sql  
     environment:
       - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
       - MYSQL_DATABASE=$MYSQL_DATABASE

@@ -35,7 +35,7 @@ app.use(cors())
 // }
 
 app.get("/", (_, res) => {
-    let sql = `SELECT count(*) FROM USER`
+    let sql = `SELECT * FROM USER JOIN scores`
     database.query(sql, (error, result) => {
         if (error) throw error
 
